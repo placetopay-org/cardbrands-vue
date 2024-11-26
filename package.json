@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "npm run build:lib && npm run build:web",
+    "build:lib": "vue-tsc -b && vite build",
+    "build:web": "vue-tsc -b && vite build --config vite.web.config.ts",
     "preview": "vite preview"
   },
   "dependencies": {

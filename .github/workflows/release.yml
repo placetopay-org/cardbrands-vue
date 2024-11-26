@@ -27,7 +27,7 @@ jobs:
 
       # Build package
       - name: Build
-        run: npm run build:optimized
+        run: npm run build:lib
 
       # Tests
       #- name: Run tests
