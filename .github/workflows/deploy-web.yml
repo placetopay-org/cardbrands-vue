@@ -30,7 +30,7 @@ jobs:
         run: npm run build:web
     
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
           name: production-files
           path: ./dist-web
@@ -44,11 +44,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: production-files
-          path: ./dist-web
+      # - name: Download artifact
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: production-files
+      #     path: ./dist-web
 
       - name: Deploy to GitHub Pages
         id: deployment
