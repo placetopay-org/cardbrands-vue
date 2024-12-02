@@ -3,7 +3,6 @@ name: Deploy to GitHub Pages
 on:
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
@@ -32,7 +31,6 @@ jobs:
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
         with:
-          name: production-files
           path: ./dist-web
 
   deploy:
@@ -44,14 +42,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # - name: Download artifact
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: production-files
-      #     path: ./dist-web
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: production-files
