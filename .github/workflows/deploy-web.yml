@@ -28,25 +28,25 @@ jobs:
       - name: Build web
         run: npm run build:web
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist-web
+      # - name: Deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     folder: dist-web
     
-  #     - name: Upload production-ready build files
-  #       uses: actions/upload-pages-artifact@v3
-  #       with:
-  #         path: ./dist-web
+      - name: Upload production-ready build files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist-web
 
-  # deploy:
-  #   name: Deploy
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-  #   steps:
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
